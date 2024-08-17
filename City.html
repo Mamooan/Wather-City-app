@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* .city::first-letter {
+            color: red;
+            text-transform: uppercase;
+        } */
+
+        .a {
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+            background-image: url(./pexels-peng-liu-169647.jpg);
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .b {
+            width: 50%;
+            height: 1000vh;
+            border: 1px solid red;
+        }
+
+        .c {
+            width: 35%;
+            height: 8.7vh;
+            opacity: 0.6;
+            margin-top: 8%;
+            border: none;
+            border-top-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 0 0 0.35 white;
+            outline: none;
+            font-size: 20px;
+            padding-left: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .c:focus {
+            text-transform: uppercase;
+        }
+
+        .d {
+            height: 20vh;
+            width: 50%;
+            border: 1px solid beige;
+            color: white;
+        }
+
+        li {
+            padding: 10px 25px;
+            transform: translateX(3);
+            /* border: 2px dotted ; */
+            background-color: rgba(255, 255, 255, 0.428);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* gap: 10px; */
+            flex-direction: column;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <input type="text" placeholder="Enter Country Name" onkeypress="my()" class="c">
+        <!-- <button onclick="my()" onkeypress="">Buttou</button> -->
+        <!-- <div class="d"></div> -->
+        <ul style="display: flex;flex-direction: column;gap: 30px;"></ul>
+
+    </div>
+    <script>
+
+
+        function my() {
+            inp = document.querySelector("input")
+            ul = document.querySelector("ul");
+            // city = document.querySelector(".city");
+            // var re= city.toUpperCase()
+            // div=document.querySelector(".d");
+            fetch(`https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json`)
+                .then(value => value.json())
+                .then(data => you(data))
+
+            // console.log("ul");
+            function you(e) {
+                if (inp.value == 0) {
+                    // console.log("Please Enter any Element");
+                    alert("Please Enter any Element");
+                }
+                else {
+                    // console.log(e,"here");
+                    var z = e.filter((ele) => {
+                        // console.log(ele.city);
+                        return ele.city.toLowerCase().includes(inp.value.toLowerCase())
+                    })
+                    // console.log(z,"here");
+                    // div.innerHTML=''; 
+                    ul.innerHTML = "";
+
+
+
+                    z.forEach(ela => {
+                        // // console.log(ela,div,"here");
+                        // // div.innerHTML+=ela.city
+
+
+                        var myExp = new RegExp(inp.value, 'gi')
+                        var reg = ela.city.replace((myExp), city => `<span style="color:red;">${city}</span>`)
+                        var li = document.createElement("li")
+                        li.innerHTML = `<h2 class="city">${reg}</h2> <h2>Population: ${ela.population}</h2> <h2>Rank: ${ela.rank}</h2> <h2>State: ${ela.state}</h2>`
+                        ul.appendChild(li);
+
+
+
+
+                        // let c=ela.city
+                        // let startIndex = ela.city.toLowerCase().indexOf(inp.value.toLowerCase())
+                        // let l=inp.value.length
+                        // let highlightedCity
+                        // if (startIndex == 0)
+                        //     highlightedCity = `<span style="color:red">${c.slice(startIndex,startIndex+1)}</span>`+`${c.slice(startIndex+1)}`
+                        // else{
+                        //     highlightedCity = `${c.slice(0,startIndex)}`+`<span style="color:red">${c.slice(startIndex,startIndex+1)}</span>`+`${c.slice(startIndex+1)}`
+                        // }
+                        // var li=document.createElement("li")
+                        // li.innerHTML=`<h2 class="city">City: ${highlightedCity}</h2> <h2>Population: ${ela.population}</h2> <h2>Rank: ${ela.rank}</h2> <h2>State: ${ela.state}</h2>`
+                        // ul.appendChild(li);
+
+
+
+
+                        // var q= redmi(ela.city,inp.value)
+                        // function redmi(jawad,usman) {
+                        //     var jaw=jawad.toLowerCase()
+                        //     var usm=usman.toLowerCase()
+                        //     array.forEach(element => {
+                        //     });
+                        // }
+                    });
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            display: grid;
+            place-items: center;
+            margin-top: 100px;
+        }
+        .ab{
+            height: 15rem;
+            width: 20em;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .ab1{
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="border-2">
+<button onclick="handleClcik()">click me</button>
+<div class="ab"></div>
+<!-- <img src="./ALMA1.jpeg" alt=""> -->
+
+
+<body>
+
+    <script>
+        const key = "f3dadf64ae05e9525c4d047e9a936d59";
+
+        function handleClcik() {
+            var inp = document.querySelector('input')
+            var div = document.querySelector('.ab')
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp.value}&appid=${key}&units=metric`)
+            .then(res=>res.json())
+            .then(data=> my(data))
+         
+        
+            function my(e) {
+                console.log(e, "here");
+                div.innerHTML=`<h2>${e.name}</h2> <h2>${e.id}</h2> <h2>${e.weather[0].main}</h2> <img class="ab1"></img>`
+
+                var ab1=document.querySelector(".ab1")
+               
+                        switch (e.weather[0].main) {
+                            case "Mist":
+                        ab1.setAttribute("src","./ALMA/ALMA1.jpg")      
+                                break;
+                                case "Haze":
+                        ab1.setAttribute("src","./VBUPVQLFMRP33GO4WUQY4VLSMI.jpg")   
+                                break;
+                                case "Clouds":
+                        ab1.setAttribute("src","./_128615151_gettyimages-1416004105.jpg.webp")   
+                                break;
+                                case "smoke":
+                        ab1.setAttribute("src","./ALMA/ALMA1.jpeg")   
+                                break;
+                                case "Clear":
+                        ab1.setAttribute("src","./ALMA1.jpeg")   
+                                break;
+                            default:
+                                break;
+                        }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // console.log(ab1," here");
+
+// ab1.setAttribute("src","_128615151_gettyimages-1416004105.jpg.webp")
+
+// switch (inp.value) {
+//     case "Lahore":
+// ab1.setAttribute("src","./ALMA/ALMA1.jpg")      
+//         break;
+//         case "Karachi":
+// ab1.setAttribute("src","./VBUPVQLFMRP33GO4WUQY4VLSMI.jpg")   
+//         break;
+//         case "Islamabad":
+//         case "Murree":
+// ab1.setAttribute("src","./_128615151_gettyimages-1416004105.jpg.webp")   
+//         break;
+//         case "Multan":
+// ab1.setAttribute("src","./ALMA/ALMA1.jpeg")   
+//         break;
+//     default:
+//         break;
+// }
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whether api</title>
+    <style>
+        .main {
+            width: 20vw;
+            height: 20vh;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <button onclick="handlecheck()">click</button>
+    <div class=" main"></div>
+</body>
+<script>
+    var hi = document.querySelector('.hi')
+    const key = "f3dadf64ae05e9525c4d047e9a936d59";
+    function handlecheck() {
+        var inp = document.querySelector('input')
+        var main = document.querySelector('.main')
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp.value}&appid=${key}&units=metric`)
+            .then(value => value.json())
+            .then(data => myfun(data))
+        function myfun(ele) {
+            console.log(ele, 'data is here');
+            main.innerHTML = `<h2>${ele.weather[0].id}</h2> <h2>${ele.main.temp}</h2>`
+        }
+    }
+</script>
+
+</html> -->
